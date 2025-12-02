@@ -1,6 +1,6 @@
 public class LibroFisico extends Libro {
     private int numPaginas;
-    private String ubicacion;
+    private String ubicacion; // por ejemplo: "Estantería A3"
 
     public LibroFisico(String titulo, String autor, int anio, int numPaginas, String ubicacion) {
         super(titulo, autor, anio);

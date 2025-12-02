@@ -19,3 +19,4 @@ public class LibroDigital extends Libro {
             + " Formato: " + formato + " Tamaño: " + tamanoMB + "MB");
     }
 }
+

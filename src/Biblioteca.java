@@ -1,12 +1,12 @@
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Biblioteca {
     private String nombre;
-    private List<Sala> salas;         
-    private List<Libro> libros;       
-    private List<Persona> personas;   
+
+    private List<Sala> salas;
+    private List<Libro> libros;
+    private List<Persona> personas;
 
     public Biblioteca(String nombre) {
         this.nombre = nombre;
@@ -19,11 +19,11 @@ public class Biblioteca {
 
 
     public void registrarVisita(Persona p) {
-        personas.add(p); 
+        personas.add(p);
         System.out.println("Registro: " + p.getNombre() + " ha entrado en la biblioteca " + nombre);
     }
 
-   
+    // Gestión de libros (agregación)
     public void addLibro(Libro l) {
         libros.add(l);
         System.out.println("Libro añadido a colección: " + l.getTitulo());
@@ -48,7 +48,7 @@ public class Biblioteca {
         }
     }
 
-
+    // Método para crear salas desde la biblioteca (composición)
     public Sala crearSala(String tipo, String nombreSala, int aforo, int extra) {
         Sala nueva;
         switch (tipo.toLowerCase()) {
@@ -56,10 +56,10 @@ public class Biblioteca {
                 nueva = new SalaLectura(nombreSala, aforo);
                 break;
             case "estudio":
-                nueva = new SalaEstudio(nombreSala, aforo, extra); // extra = numMesas
+                nueva = new SalaEstudio(nombreSala, aforo, extra);
                 break;
             case "informatica":
-                nueva = new SalaInformatica(nombreSala, aforo, extra); // extra = numEquipos
+                nueva = new SalaInformatica(nombreSala, aforo, extra); 
                 break;
             default:
                 nueva = new Sala(nombreSala, aforo, "Genérica");
@@ -105,6 +105,7 @@ public class Biblioteca {
         return total;
     }
 
+    // Asignar responsable (asociación Sala -> Persona)
     public void asignarResponsable(Sala s, Persona p) {
         if (salas.contains(s)) {
             s.setResponsable(p);
@@ -114,6 +115,7 @@ public class Biblioteca {
         }
     }
 
+    // Mostrar la información completa actualizada
     public void mostrarInformacion() {
         System.out.println("=== Biblioteca: " + nombre + " ===");
         System.out.println("-- Personas registradas (" + personas.size() + "):");
